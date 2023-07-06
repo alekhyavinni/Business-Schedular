@@ -3,6 +3,8 @@ $(function schedule() {
 var today=new Date();
 var timetags=document.querySelectorAll('.time')
 var saveBtn=document.querySelectorAll('.saveBtn')
+var reminder=document.querySelectorAll('textarea')
+var remindertext=JSON.parse(localStorage.getItem(reminder))||[]
 
 //today's Date using dayjs()
 $('#currentDay').text(dayjs().format('MMM D,YYYY'));
@@ -105,12 +107,19 @@ else if(timetags[2].textContent==today.getHours()){
   else if(timetags[8].textContent==today.getHours()){
     $('#hour-5').addClass('present')
     }
- 
+  
+  
+  
 for(let i=0;i<8;i++){
-  saveBtn[i].addEventListener('click',function(){
-    
+  saveBtn[i].addEventListener('click',function(event){
+    event.preventDefault();
+    var remintext=reminder[i].value;
+    remindertext.push(remintext);
+    localStorage.setItem('reminder',JSON.stringify(remintext))
   })
 }    
+
+
 
 console.log(timetags[0].textContent)
 
