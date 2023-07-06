@@ -4,7 +4,12 @@ var today=new Date();
 var timetags=document.querySelectorAll('.time')
 var saveBtn=document.querySelectorAll('.saveBtn')
 var reminder=document.querySelectorAll('textarea')
-var remindertext=JSON.parse(localStorage.getItem(reminder))||[]
+var description=document.querySelectorAll('.description')
+
+
+var remindertext= (JSON.parse(localStorage.getItem(reminder))||[])
+
+
 
 //today's Date using dayjs()
 $('#currentDay').text(dayjs().format('MMM D,YYYY'));
@@ -115,11 +120,12 @@ for(let i=0;i<8;i++){
     event.preventDefault();
     var remintext=reminder[i].value;
     remindertext.push(remintext);
-    localStorage.setItem('reminder',JSON.stringify(remintext))
+    localStorage.setItem('reminder',JSON.stringify(remindertext))
+  
   })
-}    
+    
 
-
+}
 
 console.log(timetags[0].textContent)
 
