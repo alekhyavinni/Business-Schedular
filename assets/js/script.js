@@ -118,9 +118,10 @@ else if(timetags[2].textContent==today.getHours()){
 for(let i=0;i<8;i++){
   saveBtn[i].addEventListener('click',function(event){
     event.preventDefault();
+    var time=$(this).parent().attr('id');
     var remintext=reminder[i].value;
     remindertext.push(remintext);
-    localStorage.setItem('reminder',JSON.stringify(remindertext))
+    localStorage.setItem(time,JSON.stringify(remindertext))
   
   })
     
